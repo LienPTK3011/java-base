@@ -1,0 +1,6 @@
+rootProject.name = 'java-ddd-base'
+include 'infra'
+include 'domain'
+include 'app'
+include 'web'
+

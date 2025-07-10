@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.base'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Dependencies on other modules
+    implementation project(':domain')
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    // Database
+    runtimeOnly 'mysql:mysql-connector-java:8.0.33'
+    // Flyway for database migrations (optional)
+    implementation 'org.flywaydb:flyway-core'
+    implementation 'org.flywaydb:flyway-mysql'
+
+    // MapStruct for entity mapping
+    implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+
+    // Test dependencies
+    testImplementation project(':domain')
+    testImplementation project(':app')
+    testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'org.testcontainers:mysql'
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}

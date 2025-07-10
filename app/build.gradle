@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.base'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Dependency on domain
+    implementation project(':domain')
+
+    // Spring dependencies
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework:spring-context'
+    implementation 'org.springframework:spring-tx'
+
+    // Security (for authentication interfaces)
+    implementation 'org.springframework.security:spring-security-core'
+
+    // JSON processing (for DTOs)
+    implementation 'com.fasterxml.jackson.core:jackson-annotations'
+
+    // Test dependencies
+    testImplementation project(':domain')
+    testImplementation project(':infra')
+    testImplementation 'org.springframework:spring-test'
+}
+
+test {
+    useJUnitPlatform()
+}
